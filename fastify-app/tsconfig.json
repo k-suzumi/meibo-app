@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "types": [
+      "node"
+    ],
+    "outDir": "dist", 
+    "rootDir": "src",
+    /* Bundler mode */
+    "moduleResolution": "Bundler",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "allowJs": false,
+    "baseUrl": "./",
+    /* Linting */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noFallthroughCasesInSwitch": true,
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
