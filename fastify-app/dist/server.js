@@ -1,31 +1,19 @@
+// backend/server.ts
 import Fastify from 'fastify';
-const fastify = Fastify({});
-const opts = {
-    schema: {
-        response: {
-            200: {
-                type: 'object',
-                properties: {
-                    pong: {
-                        type: 'string'
-                    }
-                }
-            }
-        }
-    }
-};
-fastify.get('/ping', opts, async (request, reply) => {
-    return { pong: 'it worked!' };
+import cors from '@fastify/cors';
+import { personRoutes } from './routes/person.js';
+import dotenv from 'dotenv';
+dotenv.config();
+const fastify = Fastify({ logger: true });
+async function main() {
+    await fastify.register(cors, {
+        origin: 'http://localhost:5173',
+    });
+    await fastify.register(personRoutes);
+    await fastify.listen({ port: 3000 });
+    console.log('🚀 Server running on http://localhost:3000');
+}
+main().catch((err) => {
+    fastify.log.error(err);
+    process.exit(1);
 });
-const start = async () => {
-    try {
-        await fastify.listen({ port: 3000, host: '0.0.0.0' });
-        const address = fastify.server.address();
-        const port = typeof address === 'string' ? address : address?.port;
-    }
-    catch (err) {
-        fastify.log.error(err);
-        process.exit(1);
-    }
-};
-start();
