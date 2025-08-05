@@ -16,7 +16,6 @@ app.get('/yamada',  async (c) => {try {
     // サーバーでデータを取得
     const response = await fetch('http://localhost:3001/api/person/3');
     const person = await response.json();
-    console.log(person)
     return c.html(<Yamada person={person} />);
   } catch (error) {
     console.error('データ取得エラー:', error);
@@ -28,7 +27,6 @@ app.get('/tanaka',  async (c) => {try {
     // サーバーでデータを取得
     const response = await fetch('http://localhost:3001/api/person/2');
     const person = await response.json();
-    console.log(person)
     return c.html(<Tanaka person={person} />);
   } catch (error) {
     console.error('データ取得エラー:', error);
@@ -40,7 +38,6 @@ app.get('/suzuki', async (c) => { try {
     // サーバーでデータを取得
     const response = await fetch('http://localhost:3001/api/person/1');
     const person = await response.json();
-    console.log(person)
     return c.html(<Suzuki person={person} />);
   } catch (error) {
     console.error('データ取得エラー:', error);
@@ -52,7 +49,6 @@ app.get('/yamamoto', async (c) => {try {
     // サーバーでデータを取得
     const response = await fetch('http://localhost:3001/api/person/4');
     const person = await response.json();
-    console.log(person)
     return c.html(<Yamamoto person={person} />);
   } catch (error) {
     console.error('データ取得エラー:', error);

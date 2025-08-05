@@ -1,6 +1,6 @@
 import type { Child, FC, PropsWithChildren } from 'hono/jsx';
-import AppFooter from './AppFooter.js';
-import AppHeader from './AppHeader.js';
+import AppFooter from '../common/AppFooter.js';
+import AppHeader from '../common/AppHeader.js';
 
 const Layout: FC<
   PropsWithChildren<{
