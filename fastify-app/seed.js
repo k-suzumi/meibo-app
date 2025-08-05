@@ -29,7 +29,7 @@ async function main() {
       data: {
         name: 'Suzuki',
         gender: '男性',
-        occupation: '営業'
+        job: '営業'
       }
     });
 
@@ -37,7 +37,7 @@ async function main() {
       data: {
         name: 'Tanaka',
         gender: '女性',
-        occupation: 'デザイナー'
+        job: 'デザイナー'
       }
     });
 
@@ -45,7 +45,7 @@ async function main() {
       data: {
         name: 'Yamada',
         gender: '男性',
-        occupation: 'エンジニア'
+        job: 'エンジニア'
       }
     });
 
@@ -53,7 +53,7 @@ async function main() {
       data: {
         name: 'Yamamoto',
         gender: '女性',
-        occupation: '教師'
+        job: '教師'
       }
     });
 
@@ -104,7 +104,7 @@ async function main() {
     console.log('\n=== 作成されたデータ ===');
     result.forEach(person => {
       const hobbyNames = person.hobbies.map(ph => ph.hobby.name).join(', ');
-      console.log(`${person.name}: ${person.gender}, ${person.occupation}, 趣味: ${hobbyNames}`);
+      console.log(`${person.name}: ${person.gender}, ${person.job}, 趣味: ${hobbyNames}`);
     });
 
     console.log('\nデータベースの初期化が完了しました！');

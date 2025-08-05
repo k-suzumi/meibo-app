@@ -4,7 +4,7 @@ interface Person {
   name: string;
   gender: string;
   hobbies: string[];
-  occupation: string;
+  job: string;
 }
 
 interface PersonDetailProps {
@@ -33,7 +33,7 @@ const PersonDetail = ({ person, currentPage }: PersonDetailProps) => {
       </div>
       <div className="detail-item">
         <span className="detail-label">職業：</span>
-        <span className="detail-value">{person.occupation}</span>
+        <span className="detail-value">{person.job}</span>
       </div>
     </Layout>
   );

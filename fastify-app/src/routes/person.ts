@@ -20,7 +20,7 @@ export async function personRoutes(fastify: FastifyInstance) {
     return {
       name: person.name,
       gender: person.gender,
-      occupation: person.occupation,
+      job: person.job,
       hobbies: person.hobbies.map((h:any) => h.hobby.name),
     };
   });

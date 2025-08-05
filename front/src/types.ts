@@ -2,7 +2,7 @@ export interface Person {
   name: string;
   gender: string;
   hobbies: string[];
-  occupation: string;
+  job: string;
 }
 
 export interface PersonPageProps {
