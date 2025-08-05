@@ -1,19 +1,38 @@
 import Layout from '../Layout.js';
 
-const Yamamoto = () => {
+interface Person {
+  name: string;
+  gender: string;
+  hobbies: string[];
+  occupation: string;
+}
+
+interface YamamotoProps {
+  person: Person | null;
+}
+
+const Yamamoto = ({ person }: YamamotoProps) => {
+  if (!person) {
+    return (
+      <Layout current="yamamoto">
+        <div>データの読み込みに失敗しました</div>
+      </Layout>
+    );
+  }
+
   return (
     <Layout current="yamamoto">
-      <div class="detail-item">
-        <span class="detail-label">性別：</span>
-        <span class="detail-value">女性</span>
+      <div className="detail-item">
+        <span className="detail-label">性別：</span>
+        <span className="detail-value">{person.gender}</span>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">趣味：</span>
-        <span class="detail-value">ガーデニング、読書</span>
+      <div className="detail-item">
+        <span className="detail-label">趣味：</span>
+        <span className="detail-value">{person.hobbies.join('、')}</span>
       </div>
-      <div class="detail-item">
-        <span class="detail-label">職業：</span>
-        <span class="detail-value">教師</span>
+      <div className="detail-item">
+        <span className="detail-label">職業：</span>
+        <span className="detail-value">{person.occupation}</span>
       </div>
     </Layout>
   );

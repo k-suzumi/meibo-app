@@ -14,8 +14,8 @@ async function main() {
 
   await fastify.register(personRoutes);
 
-  await fastify.listen({ port: 3000 });
-  console.log('🚀 Server running on http://localhost:3000');
+  await fastify.listen({ port: 3001 });
+  console.log('🚀 Server running on http://localhost:3001');
 }
 
 main().catch((err) => {
