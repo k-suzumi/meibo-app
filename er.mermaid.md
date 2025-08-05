@@ -4,7 +4,7 @@ erDiagram
         int id PK "識別子"
         string name "名前"
         string gender "性別"
-        string occupation "職業"
+        string job "職業"
     }
 
     HOBBY {
