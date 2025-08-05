@@ -27,6 +27,7 @@ async function main() {
     // 人物データの作成
     const suzuki = await prisma.person.create({
       data: {
+        id: 1,
         name: 'Suzuki',
         gender: '男性',
         job: '営業'
@@ -35,6 +36,7 @@ async function main() {
 
     const tanaka = await prisma.person.create({
       data: {
+        id: 2,
         name: 'Tanaka',
         gender: '女性',
         job: 'デザイナー'
@@ -43,6 +45,7 @@ async function main() {
 
     const yamada = await prisma.person.create({
       data: {
+        id: 3,
         name: 'Yamada',
         gender: '男性',
         job: 'エンジニア'
@@ -51,6 +54,7 @@ async function main() {
 
     const yamamoto = await prisma.person.create({
       data: {
+        id: 4,
         name: 'Yamamoto',
         gender: '女性',
         job: '教師'

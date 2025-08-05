@@ -8,7 +8,7 @@ datasource db {
 }
 
 model Person {
-  id         Int           @id @default(autoincrement())
+  id         Int           @id
   name       String
   gender     String
   job String
@@ -16,7 +16,7 @@ model Person {
 }
 
 model Hobby {
-  id      Int           @id @default(autoincrement())
+  id      Int           @id
   name    String
   persons PersonHobby[]
 }
