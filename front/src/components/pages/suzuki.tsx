@@ -1,35 +1,19 @@
-import { useEffect, useState } from 'react';
 import Layout from '../Layout.js';
 
 const Suzuki = () => {
-  const [person, setPerson] = useState(null);
-
-  useEffect(() => {
-    fetch('http://localhost:3000/api/person/1') // 例: ID=1のデータ
-      .then((res) => res.json())
-      .then((data) => setPerson(data))
-      .catch((err) => console.error(err));
-  }, []);
-
-  if (!person) return <div>読み込み中...</div>;
-
   return (
     <Layout current="suzuki">
       <div className="detail-item">
-        <span className="detail-label">名前：</span>
-        <span className="detail-value">{person.name}</span>
-      </div>
-      <div className="detail-item">
         <span className="detail-label">性別：</span>
-        <span className="detail-value">{person.gender}</span>
+        <span className="detail-value">男性</span>
       </div>
       <div className="detail-item">
         <span className="detail-label">趣味：</span>
-        <span className="detail-value">{person.hobbies.join('、')}</span>
+        <span className="detail-value">スポーツ、音楽</span>
       </div>
       <div className="detail-item">
         <span className="detail-label">職業：</span>
-        <span className="detail-value">{person.occupation}</span>
+        <span className="detail-value">営業</span>
       </div>
     </Layout>
   );
