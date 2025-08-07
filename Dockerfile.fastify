@@ -1,24 +1,15 @@
-# Dockerfile.fastify
 FROM node:18-alpine
 
 WORKDIR /app
 
-# パッケージファイルをコピー
-COPY fastify-app/package*.json ./
+COPY back/package*.json ./
 
-# 依存関係をインストール
-RUN npm ci --only=production
+RUN npm install
 
-# アプリケーションファイルをコピー
-COPY fastify-app/ ./
+COPY back/ ./
 
-# Prismaの設定（使用している場合）
 RUN npx prisma generate
 
-RUN npm run build
-
-# ポート3001を公開
 EXPOSE 3001
 
-# アプリケーションを起動
-CMD ["sh", "-c", "node seed.js && npm start"]
+CMD ["sh", "-c", "node seed.js && npm run dev"]

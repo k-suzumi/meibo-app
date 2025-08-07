@@ -1,22 +1,13 @@
-# Dockerfile.hono
 FROM node:18-alpine
 
 WORKDIR /app
 
-# パッケージファイルをコピー
 COPY front/package*.json ./
 
-# 全ての依存関係をインストール（devDependenciesも含む）
-RUN npm ci
+RUN npm install
 
-# アプリケーションファイルをコピー
 COPY front/ ./
 
-# TypeScriptをビルド
-RUN npm run build
-
-# ポート3000を公開
 EXPOSE 3000
 
-# ビルドされたJavaScriptファイルを実行
-CMD ["node", "dist/server.js"]
+CMD ["npm", "run", "dev"]
