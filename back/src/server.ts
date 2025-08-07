@@ -2,8 +2,6 @@
 import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import { personRoutes } from './routes/person.js';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const fastify = Fastify({ logger: true });
 
