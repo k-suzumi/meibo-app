@@ -11,6 +11,11 @@ services:
       TZ: ${TZ}
     ports:
       - "${DB_PORT}:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 1s
+      timeout: 5s
+      retries: 5
     volumes:
       - db-store:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf
@@ -25,9 +30,10 @@ services:
     environment:
       - DATABASE_URL=mysql://root:${ROOT_PASS}@db:3306/meibo_app
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
-      - ./fastify-app:/app
+      - ./back:/app
       - /app/node_modules
       - /app/dist
     working_dir: /app
