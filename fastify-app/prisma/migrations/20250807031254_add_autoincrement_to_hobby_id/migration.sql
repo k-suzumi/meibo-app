@@ -1,6 +1,6 @@
 -- CreateTable
 CREATE TABLE `Person` (
-    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `id` INTEGER NOT NULL,
     `name` VARCHAR(191) NOT NULL,
     `gender` VARCHAR(191) NOT NULL,
     `job` VARCHAR(191) NOT NULL,

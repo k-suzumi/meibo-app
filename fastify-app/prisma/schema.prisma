@@ -16,7 +16,7 @@ model Person {
 }
 
 model Hobby {
-  id      Int           @id
+  id      Int           @id @default(autoincrement())
   name    String
   persons PersonHobby[]
 }

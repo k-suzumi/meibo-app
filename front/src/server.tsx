@@ -4,8 +4,6 @@ import Yamada from './components/pages/yamada.js';
 import Tanaka from './components/pages/tanaka.js';
 import Suzuki from './components/pages/suzuki.js';
 import Yamamoto from './components/pages/yamamoto.js'
-import dotenv from 'dotenv';
-dotenv.config();
 
 const app = new Hono();
 
@@ -16,7 +14,7 @@ app.get('/', (c) => {
 
 app.get('/yamada',  async (c) => {try {
     // サーバーでデータを取得
-    const response = await fetch('http://${process.env.API_URL}:3001/api/person/3');
+    const response = await fetch(`http://${process.env.API_URL}:3001/api/person/3`);
     const person = await response.json();
     return c.html(<Yamada person={person} />);
   } catch (error) {
@@ -27,7 +25,7 @@ app.get('/yamada',  async (c) => {try {
 
 app.get('/tanaka',  async (c) => {try {
     // サーバーでデータを取得
-    const response = await fetch('http://${process.env.API_URL}:3001/api/person/2');
+    const response = await fetch(`http://${process.env.API_URL}:3001/api/person/2`);
     const person = await response.json();
     return c.html(<Tanaka person={person} />);
   } catch (error) {
@@ -38,7 +36,7 @@ app.get('/tanaka',  async (c) => {try {
 
 app.get('/suzuki', async (c) => { try {
     // サーバーでデータを取得
-    const response = await fetch('http://${process.env.API_URL}:3001/api/person/1');
+    const response = await fetch(`http://${process.env.API_URL}:3001/api/person/1`);
     const person = await response.json();
     return c.html(<Suzuki person={person} />);
   } catch (error) {
@@ -49,7 +47,7 @@ app.get('/suzuki', async (c) => { try {
 
 app.get('/yamamoto', async (c) => {try {
     // サーバーでデータを取得
-    const response = await fetch('http://${process.env.API_URL}:3001/api/person/4');
+    const response = await fetch(`http://${process.env.API_URL}:3001/api/person/4`);
     const person = await response.json();
     return c.html(<Yamamoto person={person} />);
   } catch (error) {

@@ -31,7 +31,6 @@ services:
       - /app/node_modules
       - /app/dist
     working_dir: /app
-    command: sh -c "npx prisma migrate deploy && node seed.js && npm run build && npm start"
       
   hono:
     build:
@@ -41,8 +40,7 @@ services:
     ports:
       - "3000:3000" 
     environment:
-      - API_URL=http://fastify:3001
-      - FASTIFY_API_URL=http://fastify:3001
+      - API_URL=fastify
     depends_on:
       - db
       - fastify

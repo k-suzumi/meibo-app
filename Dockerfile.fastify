@@ -17,9 +17,8 @@ RUN npx prisma generate
 
 RUN npm run build
 
-
 # ポート3001を公開
 EXPOSE 3001
 
 # アプリケーションを起動
-CMD ["npm", "start"]
+CMD ["sh", "-c", "node seed.js && npm start"]
