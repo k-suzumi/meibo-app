@@ -1,10 +1,10 @@
 import { Hono } from 'hono';
 import { serve } from '@hono/node-server'
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
-import Yamada from './components/pages/yamada.js';
-import Tanaka from './components/pages/tanaka.js';
-import Suzuki from './components/pages/suzuki.js';
-import Yamamoto from './components/pages/yamamoto.js';
+import Yamada from '../src/components/pages/yamada.js';
+import Tanaka from '../src/components/pages/tanaka.js';
+import Suzuki from '../src/components/pages/suzuki.js';
+import Yamamoto from '../src/components/pages/yamamoto.js';
 
 const app = new Hono();
 
@@ -125,10 +125,18 @@ app.get('/dashboard', async (c) => {
   }
 
   const profile = await res.json();
+  console.log(profile)
+
+  let adminMessage = '';
+  if (profile.user && profile.user.role === 'admin') {
+    adminMessage = `<p style="margin: 0; font-weight: bold;">あなたは管理者です。</p>`;
+  }
+
   // 取得したプロフィール情報を表示
   return c.html(`
     <h1>ダッシュボード</h1>
     <p>ようこそ！これは保護されたページです。</p>
+  ${adminMessage}
     <pre>${JSON.stringify(profile, null, 2)}</pre>
   `);
 });
