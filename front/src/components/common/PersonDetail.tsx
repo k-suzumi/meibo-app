@@ -1,11 +1,5 @@
 import Layout from "../Layouts/Layout.js";
-
-interface Person {
-  name: string;
-  gender: string;
-  hobbies: string[];
-  job: string;
-}
+import type { Person } from "../../types.js";
 
 interface PersonDetailProps {
   person: Person | null;
