@@ -125,10 +125,18 @@ app.get('/dashboard', async (c) => {
   }
 
   const profile = await res.json();
+  console.log(profile)
+
+  let adminMessage = '';
+  if (profile.user && profile.user.role === 'admin') {
+    adminMessage = `<p style="margin: 0; font-weight: bold;">あなたは管理者です。</p>`;
+  }
+
   // 取得したプロフィール情報を表示
   return c.html(`
     <h1>ダッシュボード</h1>
     <p>ようこそ！これは保護されたページです。</p>
+  ${adminMessage}
     <pre>${JSON.stringify(profile, null, 2)}</pre>
   `);
 });
