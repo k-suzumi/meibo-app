@@ -22,7 +22,7 @@ async function main() {
   });
 
   fastify.register(jwt, {
-    secret: process.env.JWT_SECRET || 'super-secret-key',
+    secret: 'super-secret-key', // 実運用は環境変数で！
   });
 
   fastify.decorate("authenticate", async function (request: any, reply: any) {
@@ -78,6 +78,10 @@ async function main() {
 
   await fastify.listen({ port: 3001, host: '0.0.0.0' });
 }
+
+fastify.get('/healthcheck', () => {
+  return { status: 'healthy' };
+});
 
 main().catch((err) => {
   fastify.log.error(err);
