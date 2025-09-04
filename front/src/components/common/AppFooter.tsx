@@ -1,4 +1,3 @@
-import { css } from 'hono/css';
 import type { FC } from 'hono/jsx';
 
 const AppFooter: FC = () => {
