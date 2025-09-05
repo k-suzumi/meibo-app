@@ -5,8 +5,8 @@ import Yamada from '../src/components/pages/yamada.js';
 import Tanaka from '../src/components/pages/tanaka.js';
 import Suzuki from '../src/components/pages/suzuki.js';
 import Yamamoto from '../src/components/pages/yamamoto.js';
-import Login from '../src/components/common/Login.js';
-import Dashboard from '../src/components/common/Dashboard.js';
+import Login from '../../front-react/src/Login.js';
+import Dashboard from '../../front-react/src/Dashboard.js';
 
 const app = new Hono();
 

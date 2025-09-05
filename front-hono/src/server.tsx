@@ -70,7 +70,6 @@ app.get('/login', (c) => {
   `);
 });
 
-// ログイン処理：Fastify API にPOST
 app.post('/login', async (c) => {
   const form = await c.req.parseBody();
   const email = form.email;

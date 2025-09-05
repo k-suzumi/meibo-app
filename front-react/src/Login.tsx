@@ -1,4 +1,4 @@
-import { useState } from "hono/jsx";
+import { useState } from "react";
 
 const Login = () => {
     const [email, setEmail] = useState('test@example.com');
@@ -6,6 +6,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (e: Event) => {
+        console.log("hello")
         e.preventDefault();
         setLoading(true);
         try {
@@ -47,7 +48,7 @@ const Login = () => {
     return (
         <div>
             <h1>ログイン</h1>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input
