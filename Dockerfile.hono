@@ -2,11 +2,11 @@ FROM node:18-alpine
 
 WORKDIR /app
 
-COPY front/package*.json ./
+COPY front-hono/package*.json ./
 
 RUN npm install
 
-COPY front/ ./
+COPY front-hono/ ./
 
 EXPOSE 3000
 

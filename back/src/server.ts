@@ -85,7 +85,7 @@ async function main() {
       fastify.log.info(`Cookie set for user: ${user.email}`);
 
       fastify.log.info(`Redirecting to dashboard for user: ${user.email}`);
-      return reply.redirect('http://localhost:3000/dashboard');
+      return reply.redirect('http://localhost:3000/dashboard'); //一時的にvite
     }
 
     fastify.log.warn(`Login failed for email: ${email}`);

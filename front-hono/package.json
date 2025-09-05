@@ -2,7 +2,7 @@
   "name": "front",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/server.tsx",
+    "dev": "tsx watch server/server.tsx",
     "build": "tsc",
     "start": "node dist/server.js"
   },

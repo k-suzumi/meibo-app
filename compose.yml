@@ -51,10 +51,8 @@ services:
       - db
       - fastify
     volumes:
-      - ./front:/app
+      - ./front-hono:/app
       - /app/node_modules
-      - /app/dist
     working_dir: /app
-
 volumes:
   db-store:
