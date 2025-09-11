@@ -13,7 +13,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await fetch('http://localhost:3001/profile', {
+                const response = await fetch('http://api/profile', {
                     method: 'GET',
                     credentials: 'include'
                 });

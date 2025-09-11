@@ -1,59 +1,58 @@
 import { useState } from "react";
-
-import type { FormEvent, ChangeEvent } from "react";
+import SubmitButton from "../components/Button";
 
 const Login = () => {
-    const [email, setEmail] = useState('test@example.com');
-    const [password, setPassword] = useState('pass123');
-    const [loading, setLoading] = useState(false);
+    const [isError, setisError] = useState("")
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setLoading(true);
+    const handleSubmit = async (formdata: FormData) => {
+
+        const email = formdata.get("email")
+        const password = formdata.get("password")
+        if (!email || !password) {
+            alert("メールアドレスかパスワードがありません")
+            return
+        }
         try {
-            const response = await fetch('http://localhost:3001/login', {
+            const response = await fetch('http:/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 credentials: 'include',
-                 redirect: "manual",
+                redirect: "manual",
                 body: JSON.stringify({ email, password })
             });
+            const { status, ok } = response;
             console.log(response)
-            if (response.ok) {
+            if (ok) {
                 const data = await response.json();
                 console.log('ログイン成功:', data);
                 window.location.href = '/dashboard';
-                console.log("遷移実行済み")
             } else {
-                console.error('ログイン失敗');
+                console.log("response", status)
+                if (status === 401) {
+                    setisError("メールアドレスかパスワードが違います")
+                    console.error('ログイン失敗');
+                    return
+                }
+                setisError("想定外のエラー")
             }
         } catch (error) {
             console.error('エラー:', error);
-        } finally {
-            setLoading(false);
         }
     };
-    const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
 
-    const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
     return (
         <div>
             <h1>ログイン</h1>
-            <form onSubmit={handleSubmit}>
+            <form action={handleSubmit}>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input
                         id="email"
                         type="email"
-                        value={email}
-                        onChange={handleEmailChange}
-                        required
+                        name="email"
+                    required
                     />
                 </div>
                 <div>
@@ -61,15 +60,13 @@ const Login = () => {
                     <input
                         id="password"
                         type="password"
-                        value={password}
-                        onChange={handlePasswordChange}
-                        required
+                        name="password"
+                    required
                     />
                 </div>
-                <button type="submit" disabled={loading}>
-                    {loading ? 'ログイン中...' : 'ログイン'}
-                </button>
+                <SubmitButton />
             </form>
+            <p style={{ color: "red" }}>{isError}</p>
         </div>
     );
 };

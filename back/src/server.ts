@@ -55,11 +55,11 @@ async function main() {
   ];
 
   // ヘルスチェックを先に定義
-  fastify.get('/healthcheck', async () => {
+  fastify.get('/api/healthcheck', async () => {
     return { status: 'healthy' };
   });
 
-  fastify.post('/login', async (request, reply) => {
+  fastify.post('/api/login', async (request, reply) => {
     const { email, password } = request.body as any;
     fastify.log.info(`Login attempt for email: ${email}`);
 
@@ -89,12 +89,12 @@ async function main() {
     return reply.code(401).send({ error: 'Invalid credentials' });
   });
 
-  fastify.get('/profile', { preHandler: [fastify.authenticate] }, async (request, reply) => {
+  fastify.get('/api/profile', { preHandler: [fastify.authenticate] }, async (request, reply) => {
     return { message: '認証OK', user: request.user };
   });
 
   fastify.get(
-    '/admin/users',
+    '/api/admin/users',
     {
       preHandler: [
         fastify.authenticate,

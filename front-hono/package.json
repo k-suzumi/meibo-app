@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.18.0",
+    "chokidar": "^4.0.3",
     "hono": "^4.8.10",
     "react": "^19.1.1"
   },
