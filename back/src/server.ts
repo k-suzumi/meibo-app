@@ -21,8 +21,6 @@ async function main() {
   await fastify.register(cors, {
     origin: 'http://localhost:3000',
     credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   await fastify.register(fastifyCookie);
@@ -85,7 +83,7 @@ async function main() {
       fastify.log.info(`Cookie set for user: ${user.email}`);
 
       fastify.log.info(`Redirecting to dashboard for user: ${user.email}`);
-      return reply.redirect('http://localhost:3000/dashboard'); //一時的にvite
+      return reply.redirect('http://localhost:3000/dashboard'); 
     }
 
     fastify.log.warn(`Login failed for email: ${email}`);
