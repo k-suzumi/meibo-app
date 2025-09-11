@@ -7,7 +7,6 @@ import Yamamoto from '../src/components/pages/yamamoto.js';
 import { serveStatic } from '@hono/node-server/serve-static'
 import { loadAssets } from '../SearchFiles.js';
 
-
 const assets = loadAssets();
 const loginJS = assets.loginJS;
 const dashboardJS = assets.dashboardJS;

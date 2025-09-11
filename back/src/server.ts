@@ -73,17 +73,16 @@ async function main() {
       fastify.log.info(`JWT token generated for user: ${user.email}`);
 
       reply.setCookie('token', token, {
-        httpOnly: false,
-        secure: false,
-        sameSite: 'none',
-        domain: 'localhost',
         path: '/',
-        maxAge: 15 * 60 * 1000
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax',
       });
+
       fastify.log.info(`Cookie set for user: ${user.email}`);
 
       fastify.log.info(`Redirecting to dashboard for user: ${user.email}`);
-      return reply.redirect('http://localhost:3000/dashboard'); 
+      return reply.code(200).send({ message: 'Login successful' });
     }
 
     fastify.log.warn(`Login failed for email: ${email}`);

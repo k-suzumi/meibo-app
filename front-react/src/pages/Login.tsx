@@ -21,13 +21,11 @@ const Login = () => {
                 body: JSON.stringify({ email, password })
             });
             console.log(response)
-            if (response.status === 302) {
-                console.log('ログイン成功、リダイレクト中...');
-                // window.location.href = '/dashboard';
-            } else if (response.ok) {
+            if (response.ok) {
                 const data = await response.json();
                 console.log('ログイン成功:', data);
-                // window.location.href = '/dashboard';
+                window.location.href = '/dashboard';
+                console.log("遷移実行済み")
             } else {
                 console.error('ログイン失敗');
             }
