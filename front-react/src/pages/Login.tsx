@@ -13,7 +13,7 @@ const Login = () => {
             return
         }
         try {
-            const response = await fetch('http:/api/login', {
+            const response = await fetch('/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,7 +27,7 @@ const Login = () => {
             if (ok) {
                 const data = await response.json();
                 console.log('ログイン成功:', data);
-                window.location.href = '/dashboard';
+                window.location.href = '../dashboard';
             } else {
                 console.log("response", status)
                 if (status === 401) {
